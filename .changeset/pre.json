@@ -2,13 +2,14 @@
   "mode": "exit",
   "tag": "beta",
   "initialVersions": {
-    "vitepress-theme-anemos": "0.2.0-beta.3"
+    "vitepress-theme-anemos": "0.2.0-beta.4"
   },
   "changesets": [
     "brown-years-train",
     "funny-tigers-work",
     "odd-gorillas-jump",
     "odd-trains-give",
+    "shiny-places-worry",
     "six-meals-swim"
   ]
 }

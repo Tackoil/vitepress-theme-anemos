@@ -1,5 +1,11 @@
 # vitepress-theme-anemos
 
+## 1.0.0-beta.5
+
+### Major Changes
+
+- move to vitepress
+
 ## 0.2.0-beta.4
 
 ### Patch Changes
