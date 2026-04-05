@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { useData, useRoute } from "vitepress";
+import { computed } from "vue";
+import type { AnemosPost } from "../../types/index.js";
 import Common from "../components/Common.vue";
 import HomePage from "./HomePage.vue";
 import LinksPage from "./LinksPage.vue";
 import NotFound from "./NotFound.vue";
 import PostPage from "./PostPage.vue";
-import type { AnemosFrontmatter, AnemosPost } from "../../types/index.js";
+
+const LINKS_PAGE_PATHS = new Set(["/links", "/link"]);
+const LINKS_PAGE_FILES = new Set(["links.md", "link.md"]);
 
 defineProps<{
   posts?: AnemosPost[];
 }>();
 
-const { frontmatter, page } = useData();
+const { page } = useData();
 const route = useRoute();
 
 function normalizePath(path: string): string {
@@ -37,9 +40,8 @@ const isHomePage = computed(
 );
 const isLinksPage = computed(
   () =>
-    currentPath.value === "/links" ||
-    page.value.relativePath === "links.md" ||
-    Array.isArray((frontmatter.value as AnemosFrontmatter).links)
+    LINKS_PAGE_PATHS.has(currentPath.value) ||
+    LINKS_PAGE_FILES.has(page.value.relativePath)
 );
 </script>
 

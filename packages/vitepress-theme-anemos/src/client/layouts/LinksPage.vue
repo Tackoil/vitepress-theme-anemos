@@ -1,20 +1,13 @@
 <script setup lang="ts">
 import { useData } from "vitepress";
 import { computed } from "vue";
-import type { AnemosFrontmatter } from "../../types/index.js";
+import type { AnemosFrontmatter, AnemosLink } from "../../types/index.js";
 import alterAvatarUrl from "../assets/img/alter_avatar.jpg";
 
 const { frontmatter } = useData<unknown>();
 const links = computed(
-  () => ((frontmatter.value as AnemosFrontmatter).links ?? [])
+  () => ((frontmatter.value as AnemosFrontmatter).links ?? []) as AnemosLink[]
 );
-
-function jumpTo(link): void {
-  const a = document.createElement("a");
-  a.setAttribute("href", link);
-  a.setAttribute("target", "_blank");
-  a.click();
-}
 
 function fallback(event: Event): void {
   const img = event.target as HTMLImageElement;
@@ -25,13 +18,20 @@ function fallback(event: Event): void {
 
 <template>
   <div class="links-container">
-    <div
+    <a
       v-for="link in links"
       :key="link.title"
       class="link-card"
-      @click="jumpTo(link.link)"
+      :href="link.link"
+      target="_blank"
+      rel="noreferrer"
     >
-      <img class="link-card__img" :src="link.avatar" @error="fallback" />
+      <img
+        class="link-card__img"
+        :src="link.avatar || alterAvatarUrl"
+        :alt="link.title"
+        @error="fallback"
+      />
       <div class="link-card__text">
         <div class="link-card__text__title">
           {{ link.title }}
@@ -40,25 +40,26 @@ function fallback(event: Event): void {
           {{ link.intro }}
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .links-container {
   display: grid;
-  grid-template-columns: repeat(3, 33%);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
 .link-card {
   display: flex;
+  align-items: center;
   height: 48px;
-  margin: 8px;
-  padding: 32px 8px;
+  padding: 20px 12px;
   border-radius: 0.25rem;
   transition: all 0.3s;
+  text-decoration: none;
+  color: inherit;
 
   &:hover {
     background-color: var(--background-dim-color);
@@ -74,6 +75,7 @@ function fallback(event: Event): void {
 
   &__text {
     flex: 1;
+    min-width: 0;
     white-space: nowrap;
     overflow: hidden;
     line-height: 1.5;
@@ -91,6 +93,18 @@ function fallback(event: Event): void {
       color: var(--text-dim-color);
       font-size: 0.85rem;
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .links-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .links-container {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 </style>
