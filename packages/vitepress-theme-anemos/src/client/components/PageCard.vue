@@ -25,11 +25,14 @@ const globalState = inject(globalStateKey);
 
 <style lang="scss">
 .page-card__container {
+  position: relative;
   width: 100%;
+  z-index: 200;
   transition: transform 0.7s;
 }
 
 .page-card {
+  position: relative;
   max-width: 952px;
   box-sizing: border-box;
   background-color: var(--background-color);
@@ -38,7 +41,6 @@ const globalState = inject(globalStateKey);
   margin-right: auto;
   border-radius: 0.5em;
   padding: 48px 96px;
-  z-index: 200;
   box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
 }
 
