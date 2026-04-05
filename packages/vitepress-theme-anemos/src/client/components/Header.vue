@@ -3,6 +3,7 @@ import { computed, inject, onMounted, onUnmounted, ref } from "vue";
 import { useData, useRoute, useRouter } from "vitepress";
 import type { AnemosConfig } from "../../types/index.js";
 import { useBreakpoints } from "../utils/hooks/media.js";
+import { normalizeInternalPath, withBase } from "../utils/path.js";
 import { globalStateKey } from "./Keys.js";
 import ShrinkTransition from "./Transitions/ShrinkTransition.vue";
 
@@ -56,8 +57,12 @@ const navBarStyle = computed(() => {
 });
 
 function jumpTo(url: string): void {
-  router.go(url);
+  router.go(withBase(url, site.value.base));
 }
+
+const currentPath = computed(() =>
+  normalizeInternalPath(route.path, site.value.base)
+);
 </script>
 
 <template>
@@ -74,7 +79,7 @@ function jumpTo(url: string): void {
           :key="item.path"
           class="button-group__button"
           :class="
-            route.path === item.path || route.path === `${item.path}.html`
+            currentPath === normalizeInternalPath(item.path, site.base)
               ? 'button-group__button--active'
               : ''
           "
@@ -103,12 +108,9 @@ function jumpTo(url: string): void {
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  transition:
-    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    padding 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.3s ease,
-    backdrop-filter 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.45s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease,
+    backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 
   &::before {
     content: "";

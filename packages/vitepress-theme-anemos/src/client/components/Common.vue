@@ -3,6 +3,7 @@ import { useData, useRoute, useRouter } from "vitepress";
 import { computed, onMounted, provide, reactive, watch } from "vue";
 import type { AnemosConfig, AnemosFrontmatter } from "../../types/index.js";
 import { onScroll } from "../utils/events.js";
+import { normalizeInternalPath } from "../utils/path.js";
 import Header from "./Header.vue";
 import HeadPic from "./HeadPic.vue";
 import { globalStateKey } from "./Keys.js";
@@ -15,7 +16,7 @@ defineProps<{
 
 const route = useRoute();
 const router = useRouter();
-const { frontmatter, page, theme } = useData<AnemosConfig>();
+const { frontmatter, page, site, theme } = useData<AnemosConfig>();
 
 const globalState = reactive({
   scrollTop: 0,
@@ -52,7 +53,7 @@ const headpic = computed(() => {
 });
 
 const pageTitle = computed(() => {
-  if (page.value.title && normalizePath(route.path) !== "/") {
+  if (page.value.title && normalizeInternalPath(route.path, site.value.base) !== "/") {
     return page.value.title;
   } else if (theme.value.subtitle) {
     return theme.value.subtitle;
@@ -61,20 +62,8 @@ const pageTitle = computed(() => {
   }
 });
 
-function normalizePath(path: string): string {
-  if (path.endsWith(".html")) {
-    return path.slice(0, -5) || "/";
-  }
-
-  if (path !== "/" && path.endsWith("/")) {
-    return path.slice(0, -1);
-  }
-
-  return path || "/";
-}
-
 function setPageOffset(): void {
-  const currentPath = normalizePath(route.path);
+  const currentPath = normalizeInternalPath(route.path, site.value.base);
 
   if (currentPath === "/") {
     globalState.pageOffset = 0;

@@ -3,6 +3,7 @@ import { useData, useRoute } from "vitepress";
 import { computed } from "vue";
 import type { AnemosPost } from "../../types/index.js";
 import Common from "../components/Common.vue";
+import { normalizeInternalPath } from "../utils/path.js";
 import HomePage from "./HomePage.vue";
 import LinksPage from "./LinksPage.vue";
 import NotFound from "./NotFound.vue";
@@ -15,22 +16,11 @@ defineProps<{
   posts?: AnemosPost[];
 }>();
 
-const { page } = useData();
+const { page, site } = useData();
 const route = useRoute();
-
-function normalizePath(path: string): string {
-  if (path.endsWith(".html")) {
-    return path.slice(0, -5) || "/";
-  }
-
-  if (path !== "/" && path.endsWith("/")) {
-    return path.slice(0, -1);
-  }
-
-  return path || "/";
-}
-
-const currentPath = computed(() => normalizePath(route.path));
+const currentPath = computed(() =>
+  normalizeInternalPath(route.path, site.value.base)
+);
 
 const isHomePage = computed(
   () =>

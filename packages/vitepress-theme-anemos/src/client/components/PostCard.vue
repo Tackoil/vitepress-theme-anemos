@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { useData, useRouter } from "vitepress";
 import type { AnemosConfig, AnemosPost } from "../../types/index.js";
+import { withBase } from "../utils/path.js";
 
 export interface PostCardProps {
   data: AnemosPost;
@@ -9,7 +10,7 @@ export interface PostCardProps {
 
 const props = defineProps<PostCardProps>();
 const router = useRouter();
-const { theme } = useData<AnemosConfig>();
+const { site, theme } = useData<AnemosConfig>();
 
 const headpic = computed(() => {
   if (props.data.frontmatter.headpic) {
@@ -41,7 +42,7 @@ const date = computed(() => {
 });
 
 function jumpTo(): void {
-  router.go(props.data.path);
+  router.go(withBase(props.data.path, site.value.base));
 }
 </script>
 
