@@ -5,7 +5,8 @@
     "jsx": "preserve",
   },
   "include": [
-    "**/.vuepress/**/*",
+    "**/.vitepress/**/*",
+    "**/.vitepress/**/*",
     "packages/**/*",
   ],
   "exclude": [

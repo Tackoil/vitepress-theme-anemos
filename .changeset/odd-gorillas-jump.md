@@ -1,5 +1,5 @@
 ---
-"vuepress-theme-anemos": patch
+"vitepress-theme-anemos": patch
 ---
 
 dark mode

@@ -13,7 +13,7 @@ pnpm changeset version
 pnpm changeset pre exit
 
 # 新增版本 commit# get new version
-VERSION=`node -p "require('./packages/vuepress-theme-anemos/package.json').version"`
+VERSION=`node -p "require('./packages/vitepress-theme-anemos/package.json').version"`
 git add .
 git commit -m "v${VERSION}"
 git push

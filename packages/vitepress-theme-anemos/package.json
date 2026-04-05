@@ -1,0 +1,46 @@
+{
+    "name": "vitepress-theme-anemos",
+    "version": "0.2.0-beta.4",
+    "bugs": {
+        "url": "https://github.com/Tackoil/vitepress-theme-anemos/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Tackoil/vitepress-theme-anemos.git"
+    },
+    "license": "MIT",
+    "author": "Tackoil <tackoil@outlook.com>",
+    "directories": {
+        "lib": "lib"
+    },
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./lib/index.d.ts",
+            "default": "./lib/index.js"
+        },
+        "./client": {
+            "types": "./lib/client/theme.d.ts",
+            "default": "./lib/client/theme.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc --build tsconfig.build.json",
+        "build:watch": "tsc --build -w tsconfig.build.json",
+        "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,svg,png,jpg,ttf,woff,woff2}\" lib"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "@vue/reactivity": "^3.2.39",
+        "lodash-es": "^4.17.21",
+        "vue": "^3.2.38",
+        "vitepress": "^1.6.4"
+    },
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.6"
+    }
+}

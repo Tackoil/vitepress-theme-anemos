@@ -1,22 +1,22 @@
 ---
-title: vuepress-theme-anemos README
+title: 关于
 date: 2022-09-26
 headpic: 'https://wonder-egg-priority.com/assets/img/top/main/visual.jpg'
-desp: vuepress-theme-anemos 的想法与未来
+description: 关于这个主题
 ---
 
-> 一款流畅的 vuepress 主题。
+> 一款流畅的 VitePress 主题。
 
-# vuepress-theme-anemos
+# vitepress-theme-anemos
 
-vuepress-theme-anemos 是一款流畅的 vuepress 主题。致力于充分利用单页面应用（SPA）的优势，设计一个动效流畅的个人博客模版，方便博主专注于博客内容的编写。
+vitepress-theme-anemos 是一款流畅的 VitePress 主题。致力于充分利用单页面应用（SPA）的优势，设计一个动效流畅的个人博客模版，方便博主专注于博客内容的编写。
 
 Anemos 来自于[《WONDER EGG PRIORITY》](https://wonder-egg-priority.com/)特别篇中的插曲，同时也有风神的含义。~~（但不推荐观看这部动画，尤其是特别篇。）~~
 
 ## 是与不是
 
 ### 是
-- **是**一个动效流畅、布局简洁的 vuepress 主题
+- **是**一个动效流畅、布局简洁的 VitePress 主题
 - **是**一个充分发挥单页面应用特性的主题
 - **是**一个对 ACGN 爱好者相对友好的主题
 
@@ -71,10 +71,8 @@ pnpm project:build
 
 ## 参考
 
-本主题开发过程主要使用和参考了以下主题或项目，感谢各位。
+本主题迁移与开发过程主要使用和参考了以下主题或项目，感谢各位。
 
 - [fluid-dev/hexo-theme-fluid](https://github.com/fluid-dev/hexo-theme-fluid)
 - [vuepress-theme-hope/vuepress-theme-hope/md-enhance](https://github.com/vuepress-theme-hope/vuepress-theme-hope/tree/main/packages/md-enhance/)
 - [vuepress-reco/hexo-theme-reco](https://github.com/vuepress-reco/vuepress-theme-reco)
-
-

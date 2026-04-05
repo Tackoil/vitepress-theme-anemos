@@ -1,5 +1,5 @@
 ---
-"vuepress-theme-anemos": minor
+"vitepress-theme-anemos": minor
 ---
 
 Initial Pre-release

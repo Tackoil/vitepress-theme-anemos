@@ -6,8 +6,8 @@ yarn-error.log
 lib
 libs
 dist
-docs/.vuepress/.cache
-docs/.vuepress/.temp
+docs/.vitepress/cache
+docs/.vitepress/.temp
 packages/**/tsconfig.build.tsbuildinfo
 packages/**/tsconfig.cjs.tsbuildinfo
 packages/**/tsconfig.esm.tsbuildinfo

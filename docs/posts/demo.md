@@ -1,8 +1,8 @@
 ---
-title: vuepress-theme-anemos demo
+title: vitepress-theme-anemos demo
 date: 2022-09-26
 headpic: 'https://wonder-egg-priority.com/assets/img/top/main/visual.jpg'
-description: vuepress-theme-anemos 的测试用例
+description: vitepress-theme-anemos 的测试用例
 ---
 
 > 本文档用来测试 Anemos 的各个功能，主要参考自 [gungnir](https://github.com/Renovamen/vuepress-theme-gungnir)
@@ -80,8 +80,8 @@ description: vuepress-theme-anemos 的测试用例
 
 | Name | Info |
 |------|------|
-| vuepress-theme-gungnir | Gungnir is a blog theme for Vuepress 2. |
-| vuepress-theme-anemos | Anemos is another blog theme for Vuepress 2. |
+| vitepress-theme-gungnir | Gungnir is a blog theme for VitePress 2. |
+| vitepress-theme-anemos | Anemos is another blog theme for VitePress. |
 
 
 ## Images

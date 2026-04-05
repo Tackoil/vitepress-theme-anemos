@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.base.json",
   "references": [
-    { "path": "./vuepress-theme-anemos/tsconfig.build.json" },
+    { "path": "./vitepress-theme-anemos/tsconfig.build.json" },
   ],
   "files": []
 }
