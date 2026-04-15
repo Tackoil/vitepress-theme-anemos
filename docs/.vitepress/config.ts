@@ -23,7 +23,7 @@ export default (({ command }) =>
   defineAnemosVitePressConfig<AnemosConfig>({
     title: "vitepress-theme-anemos",
     description: "A smooth blog theme for VitePress",
-    base: command === "serve" ? "/" : "/vitepress-theme-anemos/",
+    base: "/",
     vite:
       command === "serve"
         ? {
